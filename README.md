@@ -75,7 +75,7 @@ main(int argc, char *argv[])
 ```
 
 ### defining and using custom characters
-another thing not mentioned often is how to define the 16(0x0-0xf) characters in cgram on these lcds. this is achieved by first sending `LCD_SETCGRAMADDR | ADDR`, then sending the 7 5 bit lines to define the character, and one for the cursor line. this library comes with a macro to ease this process, making it as easy as follows:
+another thing not mentioned often is how to define the 16(0x0-0xf)\* characters in cgram on these lcds. this is achieved by first sending `LCD_SETCGRAMADDR | ADDR`, then sending the 7 5 bit lines to define the character, and one for the cursor line. this library comes with a macro to ease this process, making it as easy as follows:
 ```
 #define ARROW_UP 0x0
 #define ARROW_DOWN 0x1
@@ -105,3 +105,4 @@ lcd_send_cmd(lcd, LCD_SETDDRAMADDR);
 lcd_send_chr(lcd, ARROW_UP);
 lcd_send_chr(lcd, ARROW_DOWN);
 ```
+\***a small gotcha:** while you can use the 0x0 address perfectly fine, as seen in the example above, do keep in mind C won't enjoy the use of it in strings as they will be terminated by this `\0`.
