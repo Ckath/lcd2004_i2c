@@ -57,4 +57,5 @@ void lcd_write(LCD *lcd, char *data);
 #define lcd_off(lcd) lcd_send_cmd(lcd, LCD_DISPLAYCONTROL | LCD_DISPLAYOFF);
 #define lcd_on(lcd) lcd_send_cmd(lcd, LCD_DISPLAYCONTROL | LCD_DISPLAYON);
 #define lcd_clear(lcd) lcd_send_cmd(lcd, LCD_CLEARDISPLAY); lcd_send_cmd(lcd, LCD_RETURNHOME);
+#define lcd_cgramset(lcd, addr) lcd_send_cmd(lcd, LCD_SETCGRAMADDR|(addr<<3))
 #endif
